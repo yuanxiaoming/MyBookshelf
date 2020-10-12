@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
-apply plugin: 'io.fabric'
+//apply plugin: 'io.fabric'
 
 static def releaseTime() {
     return new Date().format("yy.MMddHH", TimeZone.getTimeZone("GMT+8"))
@@ -8,25 +8,25 @@ static def releaseTime() {
 
 def name = "YueDu"
 def version = "2." + releaseTime()
-def gitCommits = Integer.parseInt('git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
+//def gitCommits = Integer.parseInt('git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
 
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
-    signingConfigs {
-        myConfig {
-            storeFile file(RELEASE_STORE_FILE)
-            storePassword RELEASE_KEY_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_STORE_PASSWORD
-        }
-    }
+//    signingConfigs {
+//        myConfig {
+//            storeFile file(RELEASE_STORE_FILE)
+//            storePassword RELEASE_KEY_PASSWORD
+//            keyAlias RELEASE_KEY_ALIAS
+//            keyPassword RELEASE_STORE_PASSWORD
+//        }
+//    }
 
     defaultConfig {
         applicationId "com.gedoor.monkeybook"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 10000 + gitCommits
+        versionCode 10000 /*+ gitCommits*/
         versionName version
         project.ext.set("archivesBaseName", name + "_" + version)
         multiDexEnabled true
@@ -38,15 +38,15 @@ android {
     }
     buildTypes {
         release {
-            signingConfig signingConfigs.myConfig
+//            signingConfig signingConfigs.myConfig
             buildConfigField "boolean", "IS_RELEASE", "true"
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            signingConfig signingConfigs.myConfig
-            applicationIdSuffix '.debug'
-            versionNameSuffix ' debug'
+//            signingConfig signingConfigs.myConfig
+//            applicationIdSuffix '.debug'
+//            versionNameSuffix ' debug'
             buildConfigField "boolean", "IS_RELEASE", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -70,7 +70,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     //fireBase
-    implementation 'com.google.firebase:firebase-core:16.0.8'
+    //implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
 
     //androidX
@@ -148,4 +148,4 @@ greendao {
     targetGenDir 'src/main/java'
 }
 
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'

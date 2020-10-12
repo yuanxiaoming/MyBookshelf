@@ -21,28 +21,28 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        BookInfoBeanDao.createTable(db, ifNotExists);
-        BookmarkBeanDao.createTable(db, ifNotExists);
-        BookShelfBeanDao.createTable(db, ifNotExists);
-        BookSourceBeanDao.createTable(db, ifNotExists);
-        ChapterListBeanDao.createTable(db, ifNotExists);
-        CookieBeanDao.createTable(db, ifNotExists);
-        ReplaceRuleBeanDao.createTable(db, ifNotExists);
-        SearchBookBeanDao.createTable(db, ifNotExists);
         SearchHistoryBeanDao.createTable(db, ifNotExists);
+        SearchBookBeanDao.createTable(db, ifNotExists);
+        BookSourceBeanDao.createTable(db, ifNotExists);
+        BookmarkBeanDao.createTable(db, ifNotExists);
+        ReplaceRuleBeanDao.createTable(db, ifNotExists);
+        CookieBeanDao.createTable(db, ifNotExists);
+        BookInfoBeanDao.createTable(db, ifNotExists);
+        BookShelfBeanDao.createTable(db, ifNotExists);
+        ChapterListBeanDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        BookInfoBeanDao.dropTable(db, ifExists);
-        BookmarkBeanDao.dropTable(db, ifExists);
-        BookShelfBeanDao.dropTable(db, ifExists);
-        BookSourceBeanDao.dropTable(db, ifExists);
-        ChapterListBeanDao.dropTable(db, ifExists);
-        CookieBeanDao.dropTable(db, ifExists);
-        ReplaceRuleBeanDao.dropTable(db, ifExists);
-        SearchBookBeanDao.dropTable(db, ifExists);
         SearchHistoryBeanDao.dropTable(db, ifExists);
+        SearchBookBeanDao.dropTable(db, ifExists);
+        BookSourceBeanDao.dropTable(db, ifExists);
+        BookmarkBeanDao.dropTable(db, ifExists);
+        ReplaceRuleBeanDao.dropTable(db, ifExists);
+        CookieBeanDao.dropTable(db, ifExists);
+        BookInfoBeanDao.dropTable(db, ifExists);
+        BookShelfBeanDao.dropTable(db, ifExists);
+        ChapterListBeanDao.dropTable(db, ifExists);
     }
 
     /**
@@ -61,15 +61,15 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(BookInfoBeanDao.class);
-        registerDaoClass(BookmarkBeanDao.class);
-        registerDaoClass(BookShelfBeanDao.class);
-        registerDaoClass(BookSourceBeanDao.class);
-        registerDaoClass(ChapterListBeanDao.class);
-        registerDaoClass(CookieBeanDao.class);
-        registerDaoClass(ReplaceRuleBeanDao.class);
-        registerDaoClass(SearchBookBeanDao.class);
         registerDaoClass(SearchHistoryBeanDao.class);
+        registerDaoClass(SearchBookBeanDao.class);
+        registerDaoClass(BookSourceBeanDao.class);
+        registerDaoClass(BookmarkBeanDao.class);
+        registerDaoClass(ReplaceRuleBeanDao.class);
+        registerDaoClass(CookieBeanDao.class);
+        registerDaoClass(BookInfoBeanDao.class);
+        registerDaoClass(BookShelfBeanDao.class);
+        registerDaoClass(ChapterListBeanDao.class);
     }
 
     public DaoSession newSession() {

@@ -7,12 +7,14 @@ import android.text.TextUtils;
 import com.kunfei.bookshelf.MApplication;
 import com.kunfei.bookshelf.utils.DocumentUtil;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 import androidx.documentfile.provider.DocumentFile;
@@ -91,6 +93,26 @@ public class DocumentHelper {
             e.printStackTrace();
         }
         return string;
+    }
+
+    public static String readAssetsFile(String fileName) {
+        InputStreamReader inputReader = null;
+        try {
+            inputReader = new InputStreamReader(MApplication.getInstance().getResources().getAssets().open(fileName) );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BufferedReader bufReader = new BufferedReader(inputReader);
+        StringBuilder string= new StringBuilder();
+        try {
+            String line="";
+            while((line = bufReader.readLine()) != null)
+                string.append(line);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return string.toString();
     }
 
     public static boolean writeBytes(byte[] data, String fileName, String rootPath, String... subDirs) {
